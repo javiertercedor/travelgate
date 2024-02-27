@@ -1,0 +1,44 @@
+query search ($checkIn: Date!, $checkOut: Date!){
+    hotelX {
+        search(
+            criteria: {
+                checkIn: $checkIn
+                checkOut: $checkOut
+                occupancies: [{ paxes: [{ age: 30 }, { age: 30 }] }]
+                hotels: ["1"]
+                currency: "EUR"
+                market: "ES"
+                language: "es"
+                nationality: "ES"
+            }
+            settings: {
+                client: "client_demo"
+                context: "HOTELTEST"
+                auditTransactions: false
+                testMode: true
+                timeout: 25000
+            }
+            filterSearch: { access: { includes: ["2"] } }
+        ) {
+            errors {
+                code
+                type
+                description
+            }
+            warnings {
+                code
+                type
+                description
+            }
+            options {
+                id
+                hotelCode
+                status
+                price {
+                    net
+                    gross
+                }
+            }
+        }
+    }
+}
