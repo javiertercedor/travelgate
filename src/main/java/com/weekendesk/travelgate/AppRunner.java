@@ -14,6 +14,7 @@ public class AppRunner implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) {
         service.getReactiveSearchForCalendar();
+        //service.getReactiveSearch();
         //service.getSearch();
     }
 }
